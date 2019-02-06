@@ -1,21 +1,20 @@
 const mongoose = require('mongoose');
-
 const connectionString = process.env.MONGODB_URI;
 
 mongoose.connect(connectionString, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false
 });
 
 mongoose.connection.on('connected', () => {
-    console.log('mongoose connnected to ', connectionString);
+  console.log('mongoose connnected to ', connectionString);
 });
 
 mongoose.connection.on('error', (err) => {
-    console.log('mongoose error ', err);
+  console.log('mongoose error ', err);
 });
 
 mongoose.connection.on('disconnected', () => {
-    console.log('mongoose disconnnected from ', connectionString);
+  console.log('mongoose disconnnected from ', connectionString);
 });
